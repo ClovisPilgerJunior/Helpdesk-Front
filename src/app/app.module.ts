@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Para trabalhar com formulários no Angular 18
+// Para trabalhar com formulários no Angular
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // Para realizar requisições HTTP
