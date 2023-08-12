@@ -36,6 +36,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TechnicalCreateComponent } from './components/technical/technical-create/technical-create.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { TechnicalCreateComponent } from './components/technical/technical-creat
     HeaderComponent,
     TechnicalListComponent,
     LoginComponent,
-    TechnicalCreateComponent
+    TechnicalCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,9 +76,11 @@ import { TechnicalCreateComponent } from './components/technical/technical-creat
         timeOut: 4000,
         closeButton: true,
         progressBar: true
-      })
+      }),
+      NgxMaskDirective,
+      NgxMaskPipe
     ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

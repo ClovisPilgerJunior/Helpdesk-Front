@@ -4,36 +4,36 @@
         <img class="fullWidht" src="assets/img/tecnico-create.svg" alt="helpdesk - primeiro projeot">
 
         <section class="section">
-            <mat-checkbox class="margin">Admin</mat-checkbox>
-            <mat-checkbox class="margin">Técnico</mat-checkbox>
-            <mat-checkbox class="margin">Cliente</mat-checkbox>
+            <mat-checkbox (click)="addProfile(0)" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox (click)="addProfile(1)" class="margin" color="primary">Técnico</mat-checkbox>
+            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Cliente</mat-checkbox>
         </section>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>Nome</mat-label>
-            <input matInput placeholder="Ex: João da Silva">
+            <input matInput [formControl]="name" [(ngModel)]="technical.name" name="name" required placeholder="Ex: João da Silva" maxlength="50">
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>CPF</mat-label>
-            <input matInput placeholder="Ex: 12345678992">
+            <input matInput [formControl]="cpf" [(ngModel)]="technical.cpf" name="cpf" required placeholder="Ex: 000.000.000-00" mask="000.000.000-00">
             <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>E-Mail</mat-label>
-            <input matInput placeholder="Ex: exemplo@exemplo.com">
+            <input matInput [formControl]="email" [(ngModel)]="technical.email" name="email" required placeholder="Ex: exemplo@exemplo.com">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Ex: 123">
+            <input type="password" matInput [formControl]="password" [(ngModel)]="technical.password" name="password" required placeholder="Ex: 123">
             <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
         
-        <button class="fullWidht" mat-flat-button color="primary">Cadastrar</button>
+        <button (click)="create()" [disabled]="!fieldValidate()" class="fullWidht" mat-flat-button color="primary">Cadastrar</button>
         <button class="fullWidht" mat-stroked-button color="warn" routerLink="..">Cancelar</button>
 
     </form>
