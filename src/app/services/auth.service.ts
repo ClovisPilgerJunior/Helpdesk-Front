@@ -33,4 +33,8 @@ export class AuthService {
     console.log(token + 'é false')
     return false
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }

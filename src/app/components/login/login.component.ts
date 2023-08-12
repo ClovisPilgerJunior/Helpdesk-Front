@@ -33,6 +33,7 @@ export class LoginComponent {
       const cleanedBody = responseBody.replace(/[{}":]|token/g, '');
 
       this.service.successfulLogin(cleanedBody);
+      this.toast.success('Login realizado com sucesso', 'Login', { timeOut: 3000, positionClass: 'toast-bottom-right' })
       this.router.navigate([''])
     }, () => {
       this.toast.error('Usuário e/ou senha inválidos');
