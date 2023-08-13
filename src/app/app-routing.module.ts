@@ -6,6 +6,7 @@ import { TechnicalListComponent } from './components/technical/technical-list/te
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './auth/auth.guard';
 import { TechnicalCreateComponent } from './components/technical/technical-create/technical-create.component';
+import { TechnicalUpdateComponent } from './components/technical/technical-update/technical-update.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
 
       { path: 'technical', component: TechnicalListComponent },
-      { path: 'technical/create', component: TechnicalCreateComponent }
+      { path: 'technical/create', component: TechnicalCreateComponent },
+      { path: 'technical/update/:id', component: TechnicalUpdateComponent },
     ]
   }
 ];

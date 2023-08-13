@@ -11,11 +11,24 @@ export class TechnicalService {
 
   constructor(private http: HttpClient) { }
 
+  findById(id: any): Observable<Technical> {
+    return this.http.get<Technical>(`${API_CONFIG.baseUrl}/technical/${id}`);
+  }
+
   findAll(): Observable<Technical[]> {
     return this.http.get<Technical[]>(`${API_CONFIG.baseUrl}/technical`);
   }
 
-  create(technical: Technical): Observable<any>{
-    return this.http.post(`${API_CONFIG.baseUrl}/technical`, technical)
+  create(technical: Technical): Observable<Technical>{
+    return this.http.post<Technical>(`${API_CONFIG.baseUrl}/technical`, technical)
   }
+
+  update(technical: Technical): Observable<Technical>{
+    return this.http.put<Technical>(`${API_CONFIG.baseUrl}/technical/${technical.id}`, technical)
+  }
+
+  delete(id: any): Observable<Technical>{
+    return this.http.delete<Technical>(`${API_CONFIG.baseUrl}/technical/${id}`);
+  }
+
 }

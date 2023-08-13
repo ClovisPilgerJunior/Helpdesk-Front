@@ -32,8 +32,6 @@ export class TechnicalCreateComponent {
     private toast: ToastrService,
     private router: Router
   ) {}
-
-
   
   create(): void {
     this.service.create(this.technical).subscribe(() => {

@@ -37,4 +37,8 @@ export class TechnicalListComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  delete(id: any): void {
+    this.service.delete(id)
+  }
 }
