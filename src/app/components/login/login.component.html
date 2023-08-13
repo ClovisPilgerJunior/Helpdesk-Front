@@ -3,14 +3,16 @@
         <h1>helpdesk - meu primeiro projeto</h1>
 
         <img src="assets/img/login-image.svg" alt="helpdesk login">
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width" appearance="outline">
             <mat-label>E-Mail</mat-label>
             <input [formControl]="email" required [(ngModel)]="creds.email" name="email" matInput placeholder="Ex: exemplo@exemplo.com">
+            <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
             <input [formControl]="password" required [(ngModel)]="creds.password" name="password" type="password" matInput placeholder="Ex: 1234">
+            <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
         <button (click)="login()" [disabled]="!fieldsValidate()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Login</button>
     </form>
