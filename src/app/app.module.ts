@@ -43,6 +43,7 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 import { CustomerUpdateComponent } from './components/customer/customer-update/customer-update.component';
 import { CustomerDeleteComponent } from './components/customer/customer-delete/customer-delete.component';
+import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CustomerDeleteComponent } from './components/customer/customer-delete/c
     CustomerListComponent,
     CustomerCreateComponent,
     CustomerUpdateComponent,
-    CustomerDeleteComponent
+    CustomerDeleteComponent,
+    TicketListComponent
   ],
   imports: [
     BrowserModule,
