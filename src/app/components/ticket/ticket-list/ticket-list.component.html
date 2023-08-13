@@ -1,0 +1,75 @@
+<div class="container">
+    <h1>Listando Chamados</h1>
+    <button routerLink="create" mat-raised-button color="primary">Novo Chamado</button>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <mat-radio-group color="primary">
+        <mat-radio-button (click)="orderByStatus(0)">ABERTO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus(1)">ANDAMENTO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus(2)">ENCERRADO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus('')">TODOS</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef> Titulo </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="customerName">
+                <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="technicianName">
+                <th mat-header-cell *matHeaderCellDef> Técnico </th>
+                <td mat-cell *matCellDef="let element"> {{element.technicianName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="openingDate">
+                <th mat-header-cell *matHeaderCellDef> Data de abertura </th>
+                <td mat-cell *matCellDef="let element"> {{element.openingDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="priority">
+                <th mat-header-cell *matHeaderCellDef> Prioridade </th>
+                <td mat-cell *matCellDef="let element"> {{statusPriority(element.priority)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{statusReturn(element.status)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let element">
+                    <a routerLink="">
+                        <i class="material-icons edit">edit</i>
+                    </a>
+                    <a routerLink="">
+                        <i class="material-icons delete">visibility</i>
+                    </a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+</div>
