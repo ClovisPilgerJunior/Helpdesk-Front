@@ -30,7 +30,7 @@ const routes: Routes = [
       { path: 'customer/update/:id', component: CustomerUpdateComponent },
       { path: 'customer/delete/:id', component: CustomerDeleteComponent },
 
-      { path: 'tickets', component: TicketListComponent }
+      { path: 'ticket', component: TicketListComponent }
     ]
   }
 ];
