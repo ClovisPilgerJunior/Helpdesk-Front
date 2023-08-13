@@ -46,6 +46,7 @@ import { CustomerDeleteComponent } from './components/customer/customer-delete/c
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-create.component';
 import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-update.component';
+import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-
     CustomerDeleteComponent,
     TicketListComponent,
     TicketCreateComponent,
-    TicketUpdateComponent
+    TicketUpdateComponent,
+    TicketReadComponent
   ],
   imports: [
     BrowserModule,
