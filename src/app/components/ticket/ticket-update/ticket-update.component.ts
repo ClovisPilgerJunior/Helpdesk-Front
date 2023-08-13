@@ -57,6 +57,9 @@ export class TicketUpdateComponent {
   findById(): void {
     this.ticketService.findById(this.ticket.id).subscribe(response =>{
       this.ticket = response;
+    }, ex => {
+      console.log(ex)
+      this.toast.error(ex.error.error);
     })
   }
 
@@ -90,4 +93,24 @@ export class TicketUpdateComponent {
       this.customerName.valid &&
       this.observations.valid
   }
+
+  statusReturn(status: any): string {
+    if (status == '0') {
+      return 'ABERTO';
+    } else if (status == '1') {
+      return 'EM ANDAMENTO';
+    } else {
+      return 'ENCERRADO';
+    }
+  }
+
+  statusPriority(priority: any): string {
+    if (priority == '0') {
+      return 'BAIXA';
+    } else if (priority == '1') {
+      return 'MEDIA';
+    } else {
+      return 'ALTA';
+    }
+  } 
 }
