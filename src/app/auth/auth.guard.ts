@@ -12,6 +12,5 @@ export const authGuard: CanActivateFn = (
   if(checkAuthService){
     return true;
   } 
-  console.log('aqui é o pase da URL')
   return router.parseUrl('/login');
 };

@@ -72,34 +72,34 @@ import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-      // Forms
-      FormsModule,
-      ReactiveFormsModule,
-      // Requisições http
-      HttpClientModule,
-      // Angular Material
-      MatFormFieldModule,
-      MatPaginatorModule,
-      MatCheckboxModule,
-      MatSnackBarModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatButtonModule,
-      MatSelectModule,
-      MatInputModule,
-      MatRadioModule,
-      MatTableModule,
-      MatIconModule,
-      MatListModule,
-      MatCardModule,
-      ToastrModule.forRoot({
-        timeOut: 4000,
-        closeButton: true,
-        progressBar: true
-      }),
-      NgxMaskDirective,
-      NgxMaskPipe
-    ],
+    // Forms
+    FormsModule,
+    ReactiveFormsModule,
+    // Requisições http
+    HttpClientModule,
+    // Angular Material
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    MatRadioModule,
+    MatTableModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true
+    }),
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
   providers: [AuthInterceptorProvider, provideNgxMask()],
   bootstrap: [AppComponent]
 })

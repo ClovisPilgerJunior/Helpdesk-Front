@@ -14,7 +14,7 @@ export class TicketListComponent implements OnInit {
   ELEMENT_DATA: Ticket[] = []
   FILTERED_DATA: Ticket[] = []
 
-  displayedColumns: string[] = ['id', 'title', 'customerName', 'technicianName', 'openingDate', 'priority', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'title', 'customerName', 'technicianName', 'openingDate', 'closingDate', 'priority', 'status', 'action'];
   dataSource = new MatTableDataSource<Ticket>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

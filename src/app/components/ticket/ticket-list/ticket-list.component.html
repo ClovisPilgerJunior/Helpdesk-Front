@@ -42,6 +42,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.openingDate}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="closingDate">
+                <th mat-header-cell *matHeaderCellDef> Data de fechamento</th>
+                <td mat-cell *matCellDef="let element"> {{element.closingDate}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="priority">
                 <th mat-header-cell *matHeaderCellDef> Prioridade </th>
                 <td mat-cell *matCellDef="let element"> {{statusPriority(element.priority)}} </td>
