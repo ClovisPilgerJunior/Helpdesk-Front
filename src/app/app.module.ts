@@ -38,6 +38,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TechnicalCreateComponent } from './components/technical/technical-create/technical-create.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { TechnicalUpdateComponent } from './components/technical/technical-update/technical-update.component';
+import { TechnicalDeleteComponent } from './components/technical/technical-delete/technical-delete.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TechnicalUpdateComponent } from './components/technical/technical-updat
     LoginComponent,
     TechnicalCreateComponent,
     TechnicalUpdateComponent,
+    TechnicalDeleteComponent,
   ],
   imports: [
     BrowserModule,
