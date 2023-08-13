@@ -39,6 +39,10 @@ import { TechnicalCreateComponent } from './components/technical/technical-creat
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { TechnicalUpdateComponent } from './components/technical/technical-update/technical-update.component';
 import { TechnicalDeleteComponent } from './components/technical/technical-delete/technical-delete.component';
+import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+import { CustomerUpdateComponent } from './components/customer/customer-update/customer-update.component';
+import { CustomerDeleteComponent } from './components/customer/customer-delete/customer-delete.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,10 @@ import { TechnicalDeleteComponent } from './components/technical/technical-delet
     TechnicalCreateComponent,
     TechnicalUpdateComponent,
     TechnicalDeleteComponent,
+    CustomerListComponent,
+    CustomerCreateComponent,
+    CustomerUpdateComponent,
+    CustomerDeleteComponent
   ],
   imports: [
     BrowserModule,

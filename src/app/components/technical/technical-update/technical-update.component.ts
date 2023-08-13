@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Technical } from 'src/app/models/technical';
 import { TechnicalService } from 'src/app/services/technical.service';
 
 
 @Component({
-  selector: 'app-technical-create',
-  templateUrl: './technical-create.component.html',
-  styleUrls: ['./technical-create.component.css']
+  selector: 'app-technical-update',
+  templateUrl: './technical-update.component.html',
+  styleUrls: ['./technical-update.component.css']
 })
-export class TechnicalCreateComponent {
-
+export class TechnicalUpdateComponent implements OnInit {
   technical: Technical = {
     id: '',
     name: '',
@@ -31,12 +30,25 @@ export class TechnicalCreateComponent {
   constructor(
     private service: TechnicalService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.technical.id = this.route.snapshot.paramMap.get('id');
+    this.findById();
+  }
+
+  findById(): void {
+    this.service.findById(this.technical.id).subscribe(response => {
+      response.profiles = [];
+      this.technical = response;
+    })
+  }
   
-  create(): void {
-    this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
+  update(): void {
+    this.service.update(this.technical).subscribe(() => {
+      this.toast.success('Técnico atualizado com sucesso', 'Update');
       this.router.navigate(['technical']);
     }, ex => {
       console.log(ex)
@@ -62,3 +74,4 @@ export class TechnicalCreateComponent {
     return this.name.valid && this.cpf.valid && this.email.valid && this.password.valid;
   }
 }
+

@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Technical } from 'src/app/models/technical';
-import { TechnicalService } from 'src/app/services/technical.service';
+import { Customer } from 'src/app/models/customer';
+import { CustomerService } from 'src/app/services/customer.service';
 
 
 @Component({
-  selector: 'app-technical-create',
-  templateUrl: './technical-create.component.html',
-  styleUrls: ['./technical-create.component.css']
+  selector: 'app-customer-create',
+  templateUrl: './customer-create.component.html',
+  styleUrls: ['./customer-create.component.css']
 })
-export class TechnicalCreateComponent {
+export class CustomerCreateComponent {
 
-  technical: Technical = {
+  customer: Customer = {
     id: '',
     name: '',
     cpf: '',
@@ -29,15 +29,15 @@ export class TechnicalCreateComponent {
   password: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
-    private service: TechnicalService,
+    private service: CustomerService,
     private toast: ToastrService,
     private router: Router
   ) {}
   
   create(): void {
-    this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
-      this.router.navigate(['technical']);
+    this.service.create(this.customer).subscribe(() => {
+      this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
+      this.router.navigate(['customer']);
     }, ex => {
       console.log(ex)
       if(ex.error.status === 500){
@@ -50,10 +50,10 @@ export class TechnicalCreateComponent {
 
   addProfile(profile: any): void {
 
-    if(this.technical.profiles.includes(profile)){
-      this.technical.profiles.splice(this.technical.profiles.indexOf(profile), 1)
+    if(this.customer.profiles.includes(profile)){
+      this.customer.profiles.splice(this.customer.profiles.indexOf(profile), 1)
     } else {
-      this.technical.profiles.push(profile);
+      this.customer.profiles.push(profile);
     }
 
   }

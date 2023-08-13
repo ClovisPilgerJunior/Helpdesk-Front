@@ -1,0 +1,41 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidht">Excluir Cliente</h1>
+        <img class="fullWidht" src="assets/img/tecnico-create.svg" alt="helpdesk - primeiro projeot">
+
+        <section class="section">
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Cliente</mat-checkbox>
+            <mat-checkbox [disabled]="true" class="margin" color="primary">Cliente</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput [disabled]="true" [(ngModel)]="customer.name" name="name" required placeholder="Ex: João da Silva" maxlength="50">
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput [disabled]="true" [(ngModel)]="customer.cpf" name="cpf" required placeholder="Ex: 000.000.000-00" mask="000.000.000-00">
+            <mat-icon matSuffix>pin</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>E-Mail</mat-label>
+            <input matInput [disabled]="true" [(ngModel)]="customer.email" name="email" required placeholder="Ex: exemplo@exemplo.com">
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input type="password" [disabled]="true" matInput [(ngModel)]="customer.password" name="password"  placeholder="Ex: 123">
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+        
+        <button (click)="delete()" class="fullWidht" mat-flat-button color="warn">Deletar</button>
+        <button class="fullWidht" mat-stroked-button color="warn" routerLink="../../">Cancelar</button>
+
+    </form>
+    <p class="fullWidht">by Clóvis Júnior</p>
+</div>
