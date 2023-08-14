@@ -32,7 +32,7 @@ export class CustomerUpdateComponent implements OnInit {
     private toast: ToastrService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.customer.id = this.route.snapshot.paramMap.get('id');
@@ -45,24 +45,27 @@ export class CustomerUpdateComponent implements OnInit {
       this.customer = response;
     })
   }
-  
+
   update(): void {
-    this.service.update(this.customer).subscribe(() => {
-      this.toast.success('Cliente atualizado com sucesso', 'Update');
-      this.router.navigate(['customer']);
-    }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
-      } else {
-        this.toast.error(ex.error.message);
+    this.service.update(this.customer).subscribe({
+      next: () => {
+        this.toast.success('Cliente atualizado com sucesso', 'Update');
+        this.router.navigate(['customer']);
+      },
+      error: ex => {
+        console.log(ex)
+        if (ex.error.status === 500) {
+          this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
-    })
+    });
   }
 
   addProfile(profile: any): void {
 
-    if(this.customer.profiles.includes(profile)){
+    if (this.customer.profiles.includes(profile)) {
       this.customer.profiles.splice(this.customer.profiles.indexOf(profile), 1)
     } else {
       this.customer.profiles.push(profile);

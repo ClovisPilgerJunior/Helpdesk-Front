@@ -32,25 +32,28 @@ export class TechnicalCreateComponent {
     private service: TechnicalService,
     private toast: ToastrService,
     private router: Router
-  ) {}
-  
+  ) { }
+
   create(): void {
-    this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
-      this.router.navigate(['technical']);
-    }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
-      } else {
-        this.toast.error(ex.error.message);
+    this.service.create(this.technical).subscribe({
+      next: () => {
+        this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
+        this.router.navigate(['technical']);
+      },
+      error: ex => {
+        console.log(ex)
+        if (ex.error.status === 500) {
+          this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
     })
   }
 
   addProfile(profile: any): void {
 
-    if(this.technical.profiles.includes(profile)){
+    if (this.technical.profiles.includes(profile)) {
       this.technical.profiles.splice(this.technical.profiles.indexOf(profile), 1)
     } else {
       this.technical.profiles.push(profile);

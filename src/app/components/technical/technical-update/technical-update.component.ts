@@ -32,7 +32,7 @@ export class TechnicalUpdateComponent implements OnInit {
     private toast: ToastrService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.technical.id = this.route.snapshot.paramMap.get('id');
@@ -45,24 +45,27 @@ export class TechnicalUpdateComponent implements OnInit {
       this.technical = response;
     })
   }
-  
+
   update(): void {
-    this.service.update(this.technical).subscribe(() => {
-      this.toast.success('Técnico atualizado com sucesso', 'Update');
-      this.router.navigate(['technical']);
-    }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
-      } else {
-        this.toast.error(ex.error.message);
+    this.service.update(this.technical).subscribe({
+      next: () => {
+        this.toast.success('Técnico atualizado com sucesso', 'Update');
+        this.router.navigate(['technical']);
+      },
+      error: ex => {
+        console.log(ex)
+        if (ex.error.status === 500) {
+          this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
-    })
+    });
   }
 
   addProfile(profile: any): void {
 
-    if(this.technical.profiles.includes(profile)){
+    if (this.technical.profiles.includes(profile)) {
       this.technical.profiles.splice(this.technical.profiles.indexOf(profile), 1)
     } else {
       this.technical.profiles.push(profile);

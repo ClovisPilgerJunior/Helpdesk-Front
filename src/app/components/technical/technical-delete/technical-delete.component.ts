@@ -42,13 +42,16 @@ export class TechnicalDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.service.delete(this.technical.id).subscribe(() => {
-    }, ex => {
-      if (ex.status === 200) {
-        this.toast.success('Técnico excluido com sucesso', 'Delete');
-        this.router.navigate(['technical']);
-      } else {
-        this.toast.error(ex.error.message);
+    this.service.delete(this.technical.id).subscribe({
+      next: () => {
+      },
+      error: ex => {
+        if (ex.status === 200) {
+          this.toast.success('Técnico excluido com sucesso', 'Delete');
+          this.router.navigate(['technical']);
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
     })
   }

@@ -55,21 +55,27 @@ export class TicketUpdateComponent {
   }
 
   findById(): void {
-    this.ticketService.findById(this.ticket.id).subscribe(response =>{
-      this.ticket = response;
-    }, ex => {
-      console.log(ex)
-      this.toast.error(ex.error.error);
-    })
+    this.ticketService.findById(this.ticket.id).subscribe({
+      next: response => {
+        this.ticket = response;
+      },
+      error: ex => {
+        console.log(ex)
+        this.toast.error(ex.error.error);
+      }
+    });
   }
 
   update(): void {
-    this.ticketService.update(this.ticket).subscribe(response => {
-      this.toast.success('Chamado atualizado com sucesso', 'Chamado');
-      this.router.navigate(['ticket'])
-    }, ex => {
-      console.log(ex)
-      this.toast.error(ex.error.error);
+    this.ticketService.update(this.ticket).subscribe({
+      next: response => {
+        this.toast.success('Chamado atualizado com sucesso', 'Chamado');
+        this.router.navigate(['ticket'])
+      },
+      error: ex => {
+        console.log(ex)
+        this.toast.error(ex.error.error);
+      }
     })
   }
 
@@ -112,5 +118,5 @@ export class TicketUpdateComponent {
     } else {
       return 'ALTA';
     }
-  } 
+  }
 }

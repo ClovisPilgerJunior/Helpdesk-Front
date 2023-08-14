@@ -16,15 +16,15 @@ import { TicketService } from 'src/app/services/ticket.service';
 })
 export class TicketCreateComponent implements OnInit {
 
-  ticket: Ticket = {   
-    priority: '',      
-    status: '',         
-    title: '',          
-    observations: '',   
-    technical: '',      
-    customer: '',       
-    technicianName: '', 
-    customerName: '', 
+  ticket: Ticket = {
+    priority: '',
+    status: '',
+    title: '',
+    observations: '',
+    technical: '',
+    customer: '',
+    technicianName: '',
+    customerName: '',
   }
 
   customer: Customer[] = []
@@ -53,13 +53,16 @@ export class TicketCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.ticketService.create(this.ticket).subscribe(response => {
-      this.toast.success('Chamado criado com sucesso', 'Cadastro');
-      this.router.navigate(['ticket'])
-    }, ex => {
-      console.log(ex)
-      this.toast.error(ex.error.error);
-    })
+    this.ticketService.create(this.ticket).subscribe({
+      next: response => {
+        this.toast.success('Chamado criado com sucesso', 'Cadastro');
+        this.router.navigate(['ticket'])
+      },
+      error: ex => {
+        console.log(ex)
+        this.toast.error(ex.error.error);
+      }
+    });
   }
 
   findAllCustomer(): void {

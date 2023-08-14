@@ -36,12 +36,15 @@ export class TicketReadComponent {
   }
 
   read(): void {
-    this.ticketService.findById(this.ticket.id).subscribe(response =>{
-      this.ticket = response;
-    }, ex => {
-      console.log(ex)
-      this.toast.error(ex.error.error);
-    })
+    this.ticketService.findById(this.ticket.id).subscribe({
+      next: response => {
+        this.ticket = response;
+      },
+      error: ex => {
+        console.log(ex)
+        this.toast.error(ex.error.error);
+      }
+    });
   }
 
   statusReturn(status: any): string {
@@ -62,5 +65,5 @@ export class TicketReadComponent {
     } else {
       return 'ALTA';
     }
-  } 
+  }
 }

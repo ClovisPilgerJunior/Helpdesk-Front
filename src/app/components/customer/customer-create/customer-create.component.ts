@@ -32,25 +32,28 @@ export class CustomerCreateComponent {
     private service: CustomerService,
     private toast: ToastrService,
     private router: Router
-  ) {}
-  
+  ) { }
+
   create(): void {
-    this.service.create(this.customer).subscribe(() => {
-      this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
-      this.router.navigate(['customer']);
-    }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
-      } else {
-        this.toast.error(ex.error.message);
+    this.service.create(this.customer).subscribe({
+      next: () => {
+        this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
+        this.router.navigate(['customer']);
+      },
+      error: ex => {
+        console.log()
+        if (ex.error.status === 500) {
+          this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
-    })
+    });
   }
 
   addProfile(profile: any): void {
 
-    if(this.customer.profiles.includes(profile)){
+    if (this.customer.profiles.includes(profile)) {
       this.customer.profiles.splice(this.customer.profiles.indexOf(profile), 1)
     } else {
       this.customer.profiles.push(profile);
